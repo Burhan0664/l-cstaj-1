@@ -1,16 +1,14 @@
 from fastapi import FastAPI
 import uvicorn
-
-
-from api.routes import case_router
-
+from api.routes import case_router,order_router,product_router
 
 app = FastAPI()
 
+app.include_router(case_router)
+app.include_router(order_router)
+app.include_router(product_router)
 
-@app.get('/healthcheck')
-async def healthcheck():
-    return "Hello, world"
+
 
 
 if __name__ == "__main__":
